@@ -90,3 +90,9 @@ with React you cannot load multiple versions at the same time, so you'd always w
 Can specify a singleton in that case. If you have different sub-projects defining different rules for a singleton dependency
 version, then you'd get a `Unsatisfied version ... of shared singleton module ... (required ...)` warning in the console.
 When running in isolation, it doesn't matter, these issues start showing up in the container.
+
+When you assign an ID to an element in the DOM, then that DOM element will be assigned to a variable with that ID's name
+in the browser as a global variable. If you have a global variable with the same name already, then you're going to
+have a clash. For example if you name your dependency project the same as a node, then that project variable will be
+overwritten by that element with the ID. When looking at the `remoteEntry.js` file, then you can see that at the top of it
+a global variable is declared with the name that is defined in the dependency webpack file.
