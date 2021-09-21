@@ -79,4 +79,8 @@ We can define shared modules in the module federation plugin, so that every depe
 copies of large dependencies that are being used by both of the dependencies. Can use the `shared` property for it.
 This, however, causes a problem in the module itself, as setting a dependency as shared marks it for async loading.
 So we need the same kind of async importing as we did with the container's `bootstrap.js`. In order for sharing to
-work the entry filenames have to be the same, otherwise multiple copies of the same library are loaded.
+work the entry filenames have to be the same, otherwise multiple copies of the same library are loaded. Additionally,
+for sharing to work the dependency versions have to be the same or the dependencies have to be declared in a manner
+that allows for reuse. That is, if a caret is added, then the major versions have to match for sharing, but if the minor
+version differs, then reuse is still allowed. So the version generalization that you define inside of `package.json` is
+respected.
