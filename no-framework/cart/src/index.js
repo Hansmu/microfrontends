@@ -1,1 +1,1 @@
-import './content/cartMessage';
+import ('./bootstrap');

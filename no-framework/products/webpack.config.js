@@ -10,10 +10,11 @@ module.exports = {
         // DEPENDENCY
         new ModuleFederationPlugin({
             name: 'nameOfTheProductsProject',
-            filename: 'listOfFilesThatAreAvailableFromThisProjectAndDirectionsOnHowToLoadThem.js',
+            filename: 'remoteEntry.js',
             exposes: {
                 './AliasForExposedIndexFileFromProducts': './src/fileNameToExposeInProducts'
-            }
+            },
+            shared: ['faker']
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html'

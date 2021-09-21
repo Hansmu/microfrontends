@@ -74,3 +74,9 @@ So the entire execution flow looks like this.
 `listOfFilesThatAreAvailableFromThisProjectAndDirectionsOnHowToLoadThem.js` to figure out how to fetch that required file.
 4. The file tells our app that it requires `fileNameToExposeInProducts.js` and the `faker.js` dependency.
 5. Get both of those, fetch and execute `bootstrap.js`.
+
+We can define shared modules in the module federation plugin, so that every dependency wouldn't try to load their own
+copies of large dependencies that are being used by both of the dependencies. Can use the `shared` property for it.
+This, however, causes a problem in the module itself, as setting a dependency as shared marks it for async loading.
+So we need the same kind of async importing as we did with the container's `bootstrap.js`. In order for sharing to
+work the entry filenames have to be the same, otherwise multiple copies of the same library are loaded.

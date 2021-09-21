@@ -1,1 +1,1 @@
-import './fileNameToExposeInProducts'
+import ('./bootstrap');
