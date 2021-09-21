@@ -55,6 +55,8 @@ This is because we defined the `name` property in our dependency as `nameOfThePr
 `http://localhost:8081` and the `filename` property in our dependency as 
 `listOfFilesThatAreAvailableFromThisProjectAndDirectionsOnHowToLoadThem.js`.
 
+The common `filename` used is `remoteEntry.js`.
+
 Now when the consuming container wants to actually add it, it has to separate it with an async call. This allows us to 
 tell Webpack that it has to get some code that has to queried from an external source. You can have either
 your own file that you call async. In our example `import ('./bootstrap');` from `index.js`. Then we can add the external
