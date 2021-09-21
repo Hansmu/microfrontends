@@ -1,0 +1,1 @@
+import('./bootstrap'); // or import ('products/AliasForExposedIndexFileFromProducts');
