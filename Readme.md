@@ -83,4 +83,10 @@ work the entry filenames have to be the same, otherwise multiple copies of the s
 for sharing to work the dependency versions have to be the same or the dependencies have to be declared in a manner
 that allows for reuse. That is, if a caret is added, then the major versions have to match for sharing, but if the minor
 version differs, then reuse is still allowed. So the version generalization that you define inside of `package.json` is
-respected.
+respected. The basic example works here `shared: ['faker']`. 
+
+If you need more control over how the dependencies are shared, then you have to use a different structure. For example,
+with React you cannot load multiple versions at the same time, so you'd always want a single version of React to be loaded.
+Can specify a singleton in that case. If you have different sub-projects defining different rules for a singleton dependency
+version, then you'd get a `Unsatisfied version ... of shared singleton module ... (required ...)` warning in the console.
+When running in isolation, it doesn't matter, these issues start showing up in the container.
