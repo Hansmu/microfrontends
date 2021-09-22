@@ -17,7 +17,8 @@ const devConfig = {
             filename: 'remoteEntry.js',
             exposes: {
                 './MarketingApp': './src/app/index' // Exporting mount, because we're trying to be library agnostic
-            }
+            },
+            shared: ['react', 'react-dom']
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html'

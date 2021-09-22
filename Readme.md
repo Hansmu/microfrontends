@@ -96,3 +96,6 @@ in the browser as a global variable. If you have a global variable with the same
 have a clash. For example if you name your dependency project the same as a node, then that project variable will be
 overwritten by that element with the ID. When looking at the `remoteEntry.js` file, then you can see that at the top of it
 a global variable is declared with the name that is defined in the dependency webpack file.
+
+The node_modules dependency file that is spat out by the sub-project has a name that will not necessarily contain all of
+the dependencies. This does not mean that the dependencies are not in it.
