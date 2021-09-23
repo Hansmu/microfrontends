@@ -114,3 +114,9 @@ this by adding custom prefixes.
 
 In our app we use a browser router at the top level and memory router at the sub apps. This is because our sub apps might
 not use React and their history implementation might be different, thus it might cause race conditions.
+
+Nested routes cause us issues when we have defined an output without a public path. It replaces the part after the last
+slash. `localhost:8082/auth/signin` -> `localhost:8082/auth/main.js`. We could add a public path of slash, but that 
+would cause us problems with micro frontends, as it'd try to load the main from the current domain, which is not the 
+domain of the micro frontend, but the container. If we don't set a publicPath, then scripts loaded from the remoteEntry.js
+file are relative to the URL that we loaded remoteEntry.js from.
