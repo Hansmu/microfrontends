@@ -99,3 +99,15 @@ a global variable is declared with the name that is defined in the dependency we
 
 The node_modules dependency file that is spat out by the sub-project has a name that will not necessarily contain all of
 the dependencies. This does not mean that the dependencies are not in it.
+
+As we navigate between components, then CSS might be loaded. This means that if there are global rules, then they will get
+activated when rendering this new component and the rules will stay active. So when you go back to the initial component,
+then you might be seeing things you do not expect. Have to scope the CSS to avoid it. The two main ways of scoping are:
+* CSS-in-JS
+* Scoping - have a top parent class and then prefix all of the CSS rules with that. E.g. most parent div with 
+`class="pricing-app"`, so the CSS rules would be `.pricing-app h1 { color: purple; }`
+
+CSS-in-JS introduces an issue with micro frontends. When they are built for production, then the class names are minimized.
+jss1, jss2 etc. This is done inside of our app. If we have multiple apps that only get connected during runtime, then 
+the minimized classes have already been made and the chance of a collision is high as each app has jss1, jss2 etc. Can fix
+this by adding custom prefixes.
