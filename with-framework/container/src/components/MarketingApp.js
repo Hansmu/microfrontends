@@ -1,12 +1,22 @@
 import {mount} from 'marketing/MarketingApp'; // Exporting mount, because we're trying to be library agnostic
 import React, { useRef, useEffect } from 'react';
+import {useHistory} from "react-router-dom";
 
 export default function MarketingApp() {
     const ref = useRef(null);
+    const history = useHistory();
 
     useEffect(() => {
         if (ref.current) {
-            mount(ref.current);
+            const { onParentNavigate } = mount(ref.current, {
+                onNavigate: ({ pathname: nextPathName }) => {
+                    if (history.location.pathname !== nextPathName) {
+                        history.push(nextPathName);
+                    }
+                }
+            });
+
+            history.listen(onParentNavigate);
         }
     }, []);
 

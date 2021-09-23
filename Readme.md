@@ -111,3 +111,6 @@ CSS-in-JS introduces an issue with micro frontends. When they are built for prod
 jss1, jss2 etc. This is done inside of our app. If we have multiple apps that only get connected during runtime, then 
 the minimized classes have already been made and the chance of a collision is high as each app has jss1, jss2 etc. Can fix
 this by adding custom prefixes.
+
+In our app we use a browser router at the top level and memory router at the sub apps. This is because our sub apps might
+not use React and their history implementation might be different, thus it might cause race conditions.
