@@ -2,7 +2,7 @@ import {mount} from 'auth/AuthApp'; // Exporting mount, because we're trying to 
 import React, { useRef, useEffect } from 'react';
 import {useHistory} from "react-router-dom";
 
-export default function AuthApp() {
+export default function AuthApp({onSignIn}) {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -14,7 +14,8 @@ export default function AuthApp() {
                     if (history.location.pathname !== nextPathName) {
                         history.push(nextPathName);
                     }
-                }
+                },
+                onSignIn
             });
 
             history.listen(onParentNavigate);
