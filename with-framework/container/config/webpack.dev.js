@@ -20,7 +20,8 @@ const devConfig = {
         new ModuleFederationPlugin({
             name: 'container',
             remotes: {
-                marketing: 'marketing@http://localhost:8081/remoteEntry.js'
+                marketing: 'marketing@http://localhost:8081/remoteEntry.js',
+                auth: 'auth@http://localhost:8082/remoteEntry.js'
             },
             shared: packageJson.dependencies // If you want to be very specific about the modules that you are sharing,
             // then you might not necessarily want to do this, but usually this is a nice simplification.
