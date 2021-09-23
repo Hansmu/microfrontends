@@ -9,6 +9,7 @@ export default function MarketingApp() {
     useEffect(() => {
         if (ref.current) {
             const { onParentNavigate } = mount(ref.current, {
+                initialPath: history.location.pathname,
                 onNavigate: ({ pathname: nextPathName }) => {
                     if (history.location.pathname !== nextPathName) {
                         history.push(nextPathName);
