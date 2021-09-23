@@ -1,0 +1,20 @@
+name: deploy-auth
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'with-framework/auth/**'
+
+defaults:
+  run:
+    working-directory: with-framework/auth
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
