@@ -120,3 +120,10 @@ slash. `localhost:8082/auth/signin` -> `localhost:8082/auth/main.js`. We could a
 would cause us problems with micro frontends, as it'd try to load the main from the current domain, which is not the 
 domain of the micro frontend, but the container. If we don't set a publicPath, then scripts loaded from the remoteEntry.js
 file are relative to the URL that we loaded remoteEntry.js from.
+
+**Important takeaways**
+* Your requirements drive your architecture - there are multiple different ways of structuring the app.
+* Always ask yourself "if I have to change this in the future, will I have to change another app?"
+* Everyone will eventually forget React
+* Don't forget to scope your CSS
+* MFEs might cause issues in production that you don't see in dev
